@@ -1,7 +1,7 @@
-﻿internal class Cell
+﻿internal class Cell : IDrawable
 {
     public string Symbol => ". ";
-    public ConsoleColor Color { get; }
+    public ConsoleColor Color { get; protected set; }
 
     public Cell()
     {

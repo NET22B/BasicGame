@@ -46,9 +46,20 @@
         {
             for (int x = 0; x < map.Width; x++)
             {
-                Cell? cell = map.GetCell(y, x);
-                Console.ForegroundColor = cell?.Color ?? ConsoleColor.White;
-                Console.Write(cell.Symbol);
+                IDrawable drawable = map.GetCell(y, x);
+                //IDrawable drawable = cell;
+
+                foreach (var creature in map.Creatures)
+                {
+                    if(creature.Cell == drawable)
+                    {
+                        drawable = creature;
+                        break;
+                    }
+                }
+
+                Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
+                Console.Write(drawable.Symbol);
             }
             Console.WriteLine();
         }
