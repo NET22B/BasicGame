@@ -1,1 +1,1 @@
-﻿//global using BasicGame.BasicGame.ConsoleGame;
+﻿global using System.Diagnostics;
