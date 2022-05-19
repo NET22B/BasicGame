@@ -10,7 +10,22 @@
 
     private void Play()
     {
-        
+        bool gameInProgress = true;
+        do
+        {
+            //DrawMap
+
+            //GetCommand
+
+            //Act
+
+            //DrawMap
+
+            //EnemyAction
+
+            //DrawMap
+
+        } while (gameInProgress);
     }
 
     private void Initialize()
