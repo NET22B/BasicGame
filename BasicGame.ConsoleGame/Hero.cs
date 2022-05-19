@@ -1,6 +1,7 @@
-﻿internal class Hero
+﻿internal class Hero : Creature
 {
-    public Hero()
+    public Hero(Cell heroCell) : base(heroCell, "H ")
     {
+        Color = ConsoleColor.Blue;
     }
 }
