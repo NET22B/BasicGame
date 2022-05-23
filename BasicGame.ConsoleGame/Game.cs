@@ -46,8 +46,9 @@
         {
             for (int x = 0; x < map.Width; x++)
             {
-                IDrawable drawable = map.GetCell(y, x);
-                //IDrawable drawable = cell;
+                Cell? cell = map.GetCell(y, x);
+                ArgumentNullException.ThrowIfNull(cell);
+                IDrawable drawable = cell;
 
                 foreach (var creature in map.Creatures)
                 {
@@ -58,7 +59,7 @@
                     }
                 }
 
-                Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
+                Console.ForegroundColor = drawable.Color;
                 Console.Write(drawable.Symbol);
             }
             Console.WriteLine();
@@ -72,6 +73,7 @@
         //ToDo: Read from config
         map = new Map(width: 10,height: 10);
         var heroCell = map.GetCell(0, 0);
+        ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);
         map.Creatures.Add(hero);
     }

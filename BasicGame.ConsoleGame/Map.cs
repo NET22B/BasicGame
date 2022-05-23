@@ -1,5 +1,7 @@
 ﻿
 
+using System.Diagnostics.CodeAnalysis;
+
 internal class Map
 {
     private Cell[,] cells;
@@ -24,7 +26,8 @@ internal class Map
         }
     }
 
-    internal Cell? GetCell(int y, int x)
+    [return: MaybeNull]
+    internal Cell GetCell(int y, int x)
     {
         //ToDo: Fix!
         try
