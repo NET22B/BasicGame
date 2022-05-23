@@ -21,7 +21,7 @@ internal class Map
         {
             for (int x = 0; x < Width; x++)
             {
-                cells[y, x] = new Cell(y, x);
+                cells[y, x] = new Cell(new Position(y, x));
             }
         }
     }
@@ -40,5 +40,11 @@ internal class Map
             return null;
         }
 
+    }
+
+    [return: MaybeNull]
+    internal Cell GetCell(Position newPosition)
+    {
+       return GetCell(newPosition.Y, newPosition.X);
     }
 }
