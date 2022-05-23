@@ -1,4 +1,6 @@
-﻿internal class Game
+﻿using BasicGame.ConsoleGame;
+
+internal class Game
 {
     private Map map = null!;
     private Hero hero = null!;
@@ -82,14 +84,7 @@
                 ArgumentNullException.ThrowIfNull(cell);
                 IDrawable drawable = cell;
 
-                foreach (var creature in map.Creatures)
-                {
-                    if(creature.Cell == drawable)
-                    {
-                        drawable = creature;
-                        break;
-                    }
-                }
+                drawable = map.Creatures.CreatureAtExtension(cell);
 
                 Console.ForegroundColor = drawable.Color;
                 Console.Write(drawable.Symbol);
