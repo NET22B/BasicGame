@@ -75,7 +75,7 @@ internal class Game
 
     private void DrawMap()
     {
-        Console.Clear();
+        UI.Clear();
 
         for (int y = 0; y < map.Height; y++)
         {
