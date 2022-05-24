@@ -2,7 +2,7 @@
 
 namespace BasicGame.LimitedList
 {
-    public class LimitedList<T> : IEnumerable<T>
+    public class LimitedList<T> : IEnumerable<T> 
     {
         private int capacity;
         private List<T> list;
@@ -18,6 +18,16 @@ namespace BasicGame.LimitedList
         public bool IsFull => capacity <= Count;
 
         public T this[int index] => list[index];
+        //{
+        //    get => list.ElementAt(index);
+        //}
+        //{
+        //    get
+        //    {
+        //       return list[index];
+        //    }
+        //    set => list[index] = value;
+        //}
 
         public LimitedList(int capacity)
         {
@@ -33,6 +43,8 @@ namespace BasicGame.LimitedList
             list.Add(item); return true;
 
         }
+
+        public bool Remove(T item) => list.Remove(item);
 
         public IEnumerator<T> GetEnumerator()
         {
