@@ -1,6 +1,8 @@
-﻿namespace BasicGame.LimitedList
+﻿using System.Collections;
+
+namespace BasicGame.LimitedList
 {
-    public class LimitedList<T>
+    public class LimitedList<T> : IEnumerable<T>
     {
         private int capacity;
         private List<T> list;
@@ -31,5 +33,17 @@
             list.Add(item); return true;
 
         }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in list)
+            {
+                //....
+
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
