@@ -6,7 +6,7 @@ internal class Game
 {
     private Map map = null!;
     private Hero hero = null!;
-
+    private bool gameInProgress;
 
     public Game()
     {
@@ -21,7 +21,7 @@ internal class Game
 
     private void Play()
     {
-        bool gameInProgress = true;
+        gameInProgress = true;
         do
         {
             //DrawMap
@@ -136,7 +136,18 @@ internal class Game
     {
         Position newPosition = hero.Cell.Position + movement;
         Cell? newCell = map.GetCell(newPosition);
-        if (newCell != null) hero.Cell = newCell;
+
+        var opponent = map.CreatureAt(newCell);
+        if (opponent != null) hero.Attack(opponent);
+
+        gameInProgress = !hero.IsDead;
+
+        if (newCell != null)
+        {
+            hero.Cell = newCell;
+            if (newCell.Items.Any())
+                UI.AddMessage($"You see {string.Join(", ",newCell.Items.Select(i => i.ToString()))}");
+        }
 
     }
 

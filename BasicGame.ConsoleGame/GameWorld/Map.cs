@@ -53,4 +53,9 @@ internal class Map
         if (Creatures.FirstOrDefault(c => c.Cell == creature.Cell) != null) return;
         Creatures.Add(creature);
     }
+
+    internal Creature? CreatureAt(Cell? newCell)
+    {
+        return Creatures.FirstOrDefault(c => c.Cell == newCell);
+    }
 }

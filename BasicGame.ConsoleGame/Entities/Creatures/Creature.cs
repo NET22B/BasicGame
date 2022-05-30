@@ -2,9 +2,15 @@
 {
     private Cell cell;
     private int health;
+    private ConsoleColor color;
     private string name => this.GetType().Name;
     public string Symbol { get; }
-    public ConsoleColor Color { get; protected set; } = ConsoleColor.Green;
+    public ConsoleColor Color 
+    { 
+        get => IsDead ? ConsoleColor.Gray : color;
+        protected set => color =value; 
+
+    }
 
     public int Health 
     { 
@@ -36,6 +42,7 @@
         Symbol = symbol;
         MaxHealth = maxHealth;
         health = maxHealth;
+        Color = ConsoleColor.Green;
     }
 
     public void Attack(Creature target)
