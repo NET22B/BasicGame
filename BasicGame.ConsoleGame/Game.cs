@@ -1,4 +1,5 @@
-﻿using BasicGame.ConsoleGame;
+﻿using BasicGame.ConsoleGame.Entities.Items;
+using BasicGame.ConsoleGame.GameWorld;
 
 internal class Game
 {

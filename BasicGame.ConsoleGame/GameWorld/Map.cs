@@ -1,5 +1,6 @@
 ﻿
 
+using BasicGame.ConsoleGame.GameWorld;
 using System.Diagnostics.CodeAnalysis;
 
 internal class Map

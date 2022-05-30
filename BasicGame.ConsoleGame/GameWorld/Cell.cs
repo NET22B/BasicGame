@@ -1,4 +1,7 @@
 ﻿
+using BasicGame.ConsoleGame.Entities.Items;
+using BasicGame.ConsoleGame.GameWorld;
+
 internal class Cell : IDrawable
 {
     public Position Position { get; set; }

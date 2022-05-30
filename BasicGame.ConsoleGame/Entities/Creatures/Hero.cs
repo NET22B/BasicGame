@@ -1,4 +1,6 @@
-﻿internal class Hero : Creature
+﻿using BasicGame.ConsoleGame.Entities.Items;
+
+internal class Hero : Creature
 {
 
     public LimitedList<Item> BackPack { get; }

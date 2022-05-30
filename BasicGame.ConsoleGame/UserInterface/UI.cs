@@ -1,4 +1,6 @@
-﻿internal class UI
+﻿using BasicGame.ConsoleGame.Extensions;
+
+internal class UI
 {
     internal static ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
 

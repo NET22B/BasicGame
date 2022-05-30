@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicGame.ConsoleGame
+namespace BasicGame.ConsoleGame.Extensions
 {
     internal static class MapExtensions
     {
@@ -22,9 +22,9 @@ namespace BasicGame.ConsoleGame
             //}
             //return result;
 
-            return creatures.FirstOrDefault(c => c.Cell == cell)  ?? cell as IDrawable;
-        } 
-        
+            return creatures.FirstOrDefault(c => c.Cell == cell) ?? cell as IDrawable;
+        }
+
         [return: MaybeNull]
         internal static IDrawable CreatureAtExtension2(this List<Creature> creatures, Cell cell)
         {
