@@ -32,6 +32,7 @@
         this.cell = cell;
         Symbol = symbol;
         MaxHealth = maxHealth;
+        health = maxHealth;
     }
 
 
