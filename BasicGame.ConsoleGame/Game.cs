@@ -107,9 +107,10 @@ internal class Game
 
     private void Inventory()
     {
+        UI.AddMessage(hero.BackPack.Count > 0 ? "Inventory:" : "No items in backpack");
         for (int i = 0; i < hero.BackPack.Count; i++)
         {
-            UI.AddMessage($"{i + 1}: \t{hero.BackPack[i]}");
+            UI.AddMessage($"{i + 1}: {hero.BackPack[i]}");
         }
     }
 
@@ -155,7 +156,7 @@ internal class Game
     {
         UI.Clear();
         UI.Draw(map);
-        UI.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1}");
+        UI.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1} ");
         UI.PrintLog();
     }
 
