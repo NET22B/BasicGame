@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicGame.LimitedList
 {
-    internal class MessageLog<T> : LimitedList<T>
+    public class MessageLog<T> : LimitedList<T>
     {
         public MessageLog(int capacity) : base(capacity)
         {

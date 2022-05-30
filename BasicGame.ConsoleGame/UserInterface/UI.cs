@@ -2,6 +2,8 @@
 
 internal class UI
 {
+    private static MessageLog<string> messageLog = new(6);
+
     internal static ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
 
     internal static void Clear()
@@ -29,8 +31,26 @@ internal class UI
 
         Console.ForegroundColor = ConsoleColor.White;
     }
+
+
+    internal static void AddMessage(string message) => messageLog.Add(message);
     //{
-    //    return Console.ReadKey(intercept: true).Key;
+    //    //ToDo: Check return value
+    //    messageLog.Add(message);
     //}
+
+    internal static void PrintLog()
+    {
+       // messageLog.Print(Console.WriteLine);
+        messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth -  m.Length)));
+        //messageLog.Print(PrintToConsole);
+
+    }
+
+    //Används bara som demo ovan i PrintLog()
+    private static void PrintToConsole(string message)
+    {
+        Console.WriteLine(message);
+    }
 
 }

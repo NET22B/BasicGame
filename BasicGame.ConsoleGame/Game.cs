@@ -73,7 +73,7 @@ internal class Game
     {
         if (hero.BackPack.IsFull)
         {
-            Console.WriteLine("BackPack is full");
+            UI.AddMessage("BackPack is full");
             return;
         }
 
@@ -83,7 +83,7 @@ internal class Game
 
         if (hero.BackPack.Add(item))
         {
-            Console.WriteLine($"Hero pick up {item}");
+            UI.AddMessage($"Hero pick up {item}");
             items.Remove(item);
         }
     }
@@ -100,6 +100,7 @@ internal class Game
     {
         UI.Clear();
         UI.Draw(map);
+        UI.PrintLog();
     }
 
     private void Initialize()
@@ -112,6 +113,13 @@ internal class Game
         map.Creatures.Add(hero);
 
         map.GetCell(2, 4)?.Items.Add(Item.Coin());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        map.GetCell(4, 8)?.Items.Add(Item.Stone());
         map.GetCell(4, 8)?.Items.Add(Item.Stone());
     }
 }
