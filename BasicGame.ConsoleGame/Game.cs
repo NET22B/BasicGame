@@ -1,4 +1,5 @@
-﻿using BasicGame.ConsoleGame.Entities.Items;
+﻿using BasicGame.ConsoleGame.Entities.Creatures;
+using BasicGame.ConsoleGame.Entities.Items;
 using BasicGame.ConsoleGame.GameWorld;
 
 internal class Game
@@ -135,14 +136,34 @@ internal class Game
         hero = new Hero(heroCell);
         map.Creatures.Add(hero);
 
-        map.GetCell(2, 4)?.Items.Add(Item.Coin());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
-        map.GetCell(4, 8)?.Items.Add(Item.Stone());
+        var r = new Random();
+
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
+        
+        var defaultCreatureCell = map.GetCell(5, 5);
+        ArgumentNullException.ThrowIfNull(defaultCreatureCell);
+
+        map.Place(new Orc(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 120));
+        map.Place(new Orc(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 120));
+        map.Place(new Troll(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 160));
+        map.Place(new Troll(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 160));
+        map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
+        map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
+
+        int RW(Random r)
+        {
+            return r.Next(0, map.Width);
+        }
+
+        int RH(Random r)
+        {
+            return r.Next(0, map.Height);
+        }
+
+
+
     }
 }

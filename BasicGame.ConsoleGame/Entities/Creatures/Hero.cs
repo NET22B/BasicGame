@@ -6,7 +6,7 @@ internal class Hero : Creature
     public LimitedList<Item> BackPack { get; }
     
 
-    public Hero(Cell heroCell) : base(heroCell, "H ")
+    public Hero(Cell heroCell) : base(heroCell, "H ", 100)
     {
         Color = ConsoleColor.Blue;
         BackPack = new LimitedList<Item>(3); //ToDo Read from config
