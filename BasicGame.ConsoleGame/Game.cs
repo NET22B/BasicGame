@@ -47,7 +47,7 @@ internal class Game
 
         switch (keyPressed)
         {
-           
+
             case ConsoleKey.LeftArrow:
                 Move(Direction.West);
                 break;
@@ -59,13 +59,35 @@ internal class Game
                 break;
             case ConsoleKey.DownArrow:
                 Move(Direction.South);
-                break; 
-            case ConsoleKey.P:
-                PickUp();
                 break;
-           
+            //case ConsoleKey.P:
+            //    PickUp();
+            //    break;
+            //case ConsoleKey.I:
+            //    Inventory();
+            //    break;
+
             default:
                 break;
+        }
+
+
+        var actionMeny = new Dictionary<ConsoleKey, Action>
+                    {
+                        {ConsoleKey.P, PickUp},
+                        {ConsoleKey.I, Inventory}
+                    };
+
+        if (actionMeny.ContainsKey(keyPressed))
+            actionMeny[keyPressed]?.Invoke();
+
+    }
+
+    private void Inventory()
+    {
+        for (int i = 0; i < hero.BackPack.Count; i++)
+        {
+            UI.AddMessage($"{i + 1}: \t{hero.BackPack[i]}");
         }
     }
 
@@ -92,7 +114,7 @@ internal class Game
     {
         Position newPosition = hero.Cell.Position + movement;
         Cell? newCell = map.GetCell(newPosition);
-        if(newCell != null) hero.Cell = newCell;
+        if (newCell != null) hero.Cell = newCell;
 
     }
 
@@ -100,13 +122,14 @@ internal class Game
     {
         UI.Clear();
         UI.Draw(map);
+        UI.PrintStats($"Health: {hero.Health}");
         UI.PrintLog();
     }
 
     private void Initialize()
     {
         //ToDo: Read from config
-        map = new Map(width: 10,height: 10);
+        map = new Map(width: 10, height: 10);
         var heroCell = map.GetCell(0, 0);
         ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);

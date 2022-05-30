@@ -4,6 +4,7 @@ internal class Hero : Creature
 {
 
     public LimitedList<Item> BackPack { get; }
+    
 
     public Hero(Cell heroCell) : base(heroCell, "H ")
     {

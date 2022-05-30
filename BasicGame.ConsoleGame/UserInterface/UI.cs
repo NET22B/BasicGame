@@ -53,4 +53,10 @@ internal class UI
         Console.WriteLine(message);
     }
 
+    internal static void PrintStats(string stats)
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(stats);
+        Console.ForegroundColor = ConsoleColor.White;
+    }
 }

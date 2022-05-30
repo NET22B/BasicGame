@@ -3,6 +3,8 @@
     private Cell cell;
     public string Symbol { get; }
     public ConsoleColor Color { get; protected set; } = ConsoleColor.Green;
+
+    public int Health { get; internal set; }
     public Cell Cell 
     { 
         get => cell;
