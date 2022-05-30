@@ -174,6 +174,9 @@ internal class Game
         map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
         map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
 
+        map.Creatures.ForEach(c => c.AddToLog = UI.AddMessage);
+       //map.Creatures.ForEach(c => c.AddToLog += Console.WriteLine);
+
         int RW(Random r)
         {
             return r.Next(0, map.Width);
