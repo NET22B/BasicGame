@@ -1,6 +1,6 @@
 ﻿using BasicGame.ConsoleGame.Extensions;
 
-internal class UI
+public class UI
 {
     private static MessageLog<string> messageLog = new(6);
 

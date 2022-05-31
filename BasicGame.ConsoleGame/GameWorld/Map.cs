@@ -1,9 +1,4 @@
 ﻿
-
-using BasicGame.ConsoleGame.Entities.Creatures;
-using BasicGame.ConsoleGame.GameWorld;
-using System.Diagnostics.CodeAnalysis;
-
 internal class Map
 {
     private Cell[,] cells;
@@ -42,19 +37,19 @@ internal class Map
     }
 
     [return: MaybeNull]
-    internal Cell GetCell(Position newPosition)
+    public Cell GetCell(Position newPosition)
     {
        return GetCell(newPosition.Y, newPosition.X);
     }
 
-    internal void Place(Creature creature)
+    public void Place(Creature creature)
     {
         // if (Creatures.Where(c => c.Cell == creature.Cell).Count() >= 1) return;
         if (Creatures.FirstOrDefault(c => c.Cell == creature.Cell) != null) return;
         Creatures.Add(creature);
     }
 
-    internal Creature? CreatureAt(Cell? newCell)
+    public Creature? CreatureAt(Cell? newCell)
     {
         return Creatures.FirstOrDefault(c => c.Cell == newCell);
     }
