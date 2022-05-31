@@ -24,7 +24,7 @@ internal class Map
     }
 
     [return: MaybeNull]
-    internal Cell GetCell(int y, int x)
+    public Cell GetCell(int y, int x)
     {
         
         if(x < 0 || x >= Width || y < 0 || y >= Height)

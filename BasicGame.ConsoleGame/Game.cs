@@ -126,6 +126,14 @@ internal class Game
         var item = items.FirstOrDefault();
         if (item is null) return;
 
+        if(item is IUsable usable)
+        {
+            usable.Use(hero);
+            hero.Cell.Items.Remove(item);
+            UI.AddMessage($"Hero use the {item}");
+            return;
+        }
+
         if (hero.BackPack.Add(item))
         {
             UI.AddMessage($"Hero pick up {item}");
@@ -175,6 +183,10 @@ internal class Game
         map.GetCell(RH(r), RW(r))?.Items.Add(Item.Coin());
         map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
         map.GetCell(RH(r), RW(r))?.Items.Add(Item.Stone());
+
+        map.GetCell(RH(r), RW(r))?.Items.Add(Potion.HealthPotion());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Potion.HealthPotion());
+        map.GetCell(RH(r), RW(r))?.Items.Add(Potion.HealthPotion());
         
         var defaultCreatureCell = map.GetCell(5, 5);
         ArgumentNullException.ThrowIfNull(defaultCreatureCell);
