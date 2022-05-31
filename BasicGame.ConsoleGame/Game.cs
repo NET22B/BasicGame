@@ -6,16 +6,17 @@ using Microsoft.Extensions.Configuration;
 
 internal class Game
 {
-    private IMap map = null!;
+    private IMap map;
     private Hero hero = null!;
     private bool gameInProgress;
     private IUI ui;
-    private readonly IConfiguration config;
+    //private readonly IConfiguration config;
 
-    public Game(IUI consoleUI, IConfiguration config)
+    public Game(IUI consoleUI, IMap map)
     {
         ui = consoleUI;
-        this.config = config;
+        //this.config = config;
+        this.map = map;
     }
 
     internal void Run()
@@ -168,17 +169,17 @@ internal class Game
     private void DrawMap()
     {
         ui.Clear();
-        ui.Draw(map);
+        ui.Draw();
         ui.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1} ");
         ui.PrintLog();
     }
 
     private void Initialize()
     {
-        var width = config.GetMapSizeFor("x");
-        var height = config.GetMapSizeFor("y");
+        //var width = config.GetMapSizeFor("x");
+        //var height = config.GetMapSizeFor("y");
 
-        map = new Map(width, height);
+        //map = new Map(width, height);
         var heroCell = map.GetCell(0, 0);
         ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);

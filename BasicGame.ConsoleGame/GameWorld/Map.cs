@@ -1,4 +1,8 @@
 ﻿
+using BasicGame.ConsoleGame.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+
 internal class Map : IMap
 {
     private Cell[,] cells;
@@ -7,8 +11,13 @@ internal class Map : IMap
 
     public List<Creature> Creatures { get; set; } = new List<Creature>();
 
-    public Map(int width, int height)
+   // public Map(IConfiguration config, MapSettings settings)
+    public Map(IConfiguration config, IOptions<MapSettings> options)
     {
+
+        var width = config.GetMapSizeFor("x");
+        var height = config.GetMapSizeFor("y");
+
         Width = width;
         Height = height;
 

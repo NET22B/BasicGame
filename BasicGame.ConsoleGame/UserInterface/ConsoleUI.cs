@@ -2,9 +2,16 @@
 
 public class ConsoleUI : IUI
 {
-    private static MessageLog<string> messageLog = new(6);
+    private  ILimitedList<string> messageLog;
+    private readonly IMap map;
 
     public ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
+
+    public ConsoleUI(IMap map, ILimitedList<string> messagelog)
+    {
+        this.map = map;
+        messageLog = messagelog;
+    }
 
     public void Clear()
     {
@@ -12,7 +19,7 @@ public class ConsoleUI : IUI
         Console.SetCursorPosition(0, 0);
     }
 
-    public void Draw(IMap map)
+    public void Draw()
     {
         for (int y = 0; y < map.Height; y++)
         {
