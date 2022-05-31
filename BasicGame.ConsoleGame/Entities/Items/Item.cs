@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicGame.ConsoleGame.Entities.Items
 {
-    internal class Item : IDrawable
+    public class Item : IDrawable
     {
         private readonly string name;
         public ConsoleColor Color { get; }

@@ -4,13 +4,14 @@ using BasicGame.ConsoleGame.GameWorld;
 
 internal class Game
 {
-    private Map map = null!;
+    private IMap map = null!;
     private Hero hero = null!;
     private bool gameInProgress;
+    private IUI ui;
 
-    public Game()
+    public Game(IUI consoleUI)
     {
-
+        ui = consoleUI;
     }
 
     internal void Run()
@@ -44,7 +45,7 @@ internal class Game
 
     private void GetCommand()
     {
-        var keyPressed = UI.GetKey();
+        var keyPressed = ui.GetKey();
 
         switch (keyPressed)
         {
@@ -98,19 +99,19 @@ internal class Game
         if (item != null && hero.BackPack.Remove(item))
         {
             hero.Cell.Items.Add(item);
-            UI.AddMessage($"Hero dropped the {item}");
+            ui.AddMessage($"Hero dropped the {item}");
         }
         else
-            UI.AddMessage("Backpack is empty");
+            ui.AddMessage("Backpack is empty");
 
     }
 
     private void Inventory()
     {
-        UI.AddMessage(hero.BackPack.Count > 0 ? "Inventory:" : "No items in backpack");
+        ui.AddMessage(hero.BackPack.Count > 0 ? "Inventory:" : "No items in backpack");
         for (int i = 0; i < hero.BackPack.Count; i++)
         {
-            UI.AddMessage($"{i + 1}: {hero.BackPack[i]}");
+            ui.AddMessage($"{i + 1}: {hero.BackPack[i]}");
         }
     }
 
@@ -118,7 +119,7 @@ internal class Game
     {
         if (hero.BackPack.IsFull)
         {
-            UI.AddMessage("BackPack is full");
+            ui.AddMessage("BackPack is full");
             return;
         }
 
@@ -130,13 +131,13 @@ internal class Game
         {
             usable.Use(hero);
             hero.Cell.Items.Remove(item);
-            UI.AddMessage($"Hero use the {item}");
+            ui.AddMessage($"Hero use the {item}");
             return;
         }
 
         if (hero.BackPack.Add(item))
         {
-            UI.AddMessage($"Hero pick up {item}");
+            ui.AddMessage($"Hero pick up {item}");
             items.Remove(item);
         }
     }
@@ -155,17 +156,17 @@ internal class Game
         {
             hero.Cell = newCell;
             if (newCell.Items.Any())
-                UI.AddMessage($"You see {string.Join(", ",newCell.Items.Select(i => i.ToString()))}");
+                ui.AddMessage($"You see {string.Join(", ",newCell.Items.Select(i => i.ToString()))}");
         }
 
     }
 
     private void DrawMap()
     {
-        UI.Clear();
-        UI.Draw(map);
-        UI.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1} ");
-        UI.PrintLog();
+        ui.Clear();
+        ui.Draw(map);
+        ui.PrintStats($"Health: {hero.Health}, Enemys: {map.Creatures.Count -1} ");
+        ui.PrintLog();
     }
 
     private void Initialize()
@@ -198,7 +199,7 @@ internal class Game
         map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
         map.Place(new Goblin(map.GetCell(RH(r), RW(r)) ?? defaultCreatureCell, 200));
 
-        map.Creatures.ForEach(c => c.AddToLog = UI.AddMessage);
+        map.Creatures.ForEach(c => c.AddToLog = ui.AddMessage);
        //map.Creatures.ForEach(c => c.AddToLog += Console.WriteLine);
 
         int RW(Random r)

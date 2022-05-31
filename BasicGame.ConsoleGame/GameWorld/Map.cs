@@ -1,5 +1,5 @@
 ﻿
-internal class Map
+internal class Map : IMap
 {
     private Cell[,] cells;
     public int Width { get; }
@@ -26,8 +26,8 @@ internal class Map
     [return: MaybeNull]
     public Cell GetCell(int y, int x)
     {
-        
-        if(x < 0 || x >= Width || y < 0 || y >= Height)
+
+        if (x < 0 || x >= Width || y < 0 || y >= Height)
         {
             //ToDo Dont return null!
             return null;
@@ -39,7 +39,7 @@ internal class Map
     [return: MaybeNull]
     public Cell GetCell(Position newPosition)
     {
-       return GetCell(newPosition.Y, newPosition.X);
+        return GetCell(newPosition.Y, newPosition.X);
     }
 
     public void Place(Creature creature)

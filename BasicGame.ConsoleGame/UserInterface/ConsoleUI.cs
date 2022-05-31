@@ -1,18 +1,18 @@
 ﻿using BasicGame.ConsoleGame.Extensions;
 
-public class UI
+public class ConsoleUI : IUI
 {
     private static MessageLog<string> messageLog = new(6);
 
-    internal static ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
+    public ConsoleKey GetKey() => Console.ReadKey(intercept: true).Key;
 
-    internal static void Clear()
+    public void Clear()
     {
         Console.CursorVisible = false;
-        Console.SetCursorPosition(0,0);
+        Console.SetCursorPosition(0, 0);
     }
 
-    internal static void Draw(Map map)
+    public void Draw(IMap map)
     {
         for (int y = 0; y < map.Height; y++)
         {
@@ -33,27 +33,27 @@ public class UI
     }
 
 
-    internal static void AddMessage(string message) => messageLog.Add(message);
+    public void AddMessage(string message) => messageLog.Add(message);
     //{
     //    //ToDo: Check return value
     //    messageLog.Add(message);
     //}
 
-    internal static void PrintLog()
+    public void PrintLog()
     {
-       // messageLog.Print(Console.WriteLine);
-        messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth -  m.Length)));
+        // messageLog.Print(Console.WriteLine);
+        messageLog.Print(m => Console.WriteLine(m + new string(' ', Console.WindowWidth - m.Length)));
         //messageLog.Print(PrintToConsole);
 
     }
 
     //Används bara som demo ovan i PrintLog()
-    private static void PrintToConsole(string message)
-    {
-        Console.WriteLine(message);
-    }
+    //private static void PrintToConsole(string message)
+    //{
+    //    Console.WriteLine(message);
+    //}
 
-    internal static void PrintStats(string stats)
+    public void PrintStats(string stats)
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine(stats);

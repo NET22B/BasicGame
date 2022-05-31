@@ -1,4 +1,4 @@
-﻿internal class Creature : IDrawable
+﻿public class Creature : IDrawable
 {
     private Cell cell;
     private int health;
