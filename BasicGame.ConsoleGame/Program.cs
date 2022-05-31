@@ -1,29 +1,30 @@
 ﻿
+using Microsoft.Extensions.Configuration;
 
-//var list = new List<Creature>();
-//var arr = new Creature[5];
+IConfiguration config = new ConfigurationBuilder()
+                                .SetBasePath(Environment.CurrentDirectory)
+                                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                                .Build();
 
-////var elemetn = list[0];
-////var elemetn2 = list[5];
-////var elemetn3 = list[10];
-////var list2 = new List<Creature>();
-////var list3 = new List<object>();
-////var dict = new Dictionary<int, Cell>();
+var ui = config.GetSection("game:ui").Value;
+
+IUI implementation;
+
+switch (ui)
+{
+    case "console" :
+        implementation = new ConsoleUI();
+        break;
+    default:
+        break;
+}
+//var x = config.GetSection("game:mapsettings:x").Value;
+//var mapsettings = config.GetSection("game:mapsettings").GetChildren();
+
+//var someValue = mapsettings.First();
 
 
-//var limitedList = new LimitedList<Creature>(10);
-//limitedList.Add(new Hero(new Cell(new Position(5,5))));
-
-//var limitedList2 = new LimitedList<int>(10);
-//var limel = limitedList[0];
-////limitedList[2] = new Hero(new Cell(new Position(5,5)));
-
-//foreach (var item in limitedList)
-//{
-//    Console.WriteLine(item);
-//}
-
-var game = new Game(new ConsoleUI());
+var game = new Game(new ConsoleUI(), config);
 game.Run();
 
 Console.WriteLine("Thanks for playing");

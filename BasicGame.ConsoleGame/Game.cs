@@ -1,6 +1,8 @@
 ﻿using BasicGame.ConsoleGame.Entities.Creatures;
 using BasicGame.ConsoleGame.Entities.Items;
+using BasicGame.ConsoleGame.Extensions;
 using BasicGame.ConsoleGame.GameWorld;
+using Microsoft.Extensions.Configuration;
 
 internal class Game
 {
@@ -8,10 +10,12 @@ internal class Game
     private Hero hero = null!;
     private bool gameInProgress;
     private IUI ui;
+    private readonly IConfiguration config;
 
-    public Game(IUI consoleUI)
+    public Game(IUI consoleUI, IConfiguration config)
     {
         ui = consoleUI;
+        this.config = config;
     }
 
     internal void Run()
@@ -171,8 +175,10 @@ internal class Game
 
     private void Initialize()
     {
-        //ToDo: Read from config
-        map = new Map(width: 10, height: 10);
+        var width = config.GetMapSizeFor("x");
+        var height = config.GetMapSizeFor("y");
+
+        map = new Map(width, height);
         var heroCell = map.GetCell(0, 0);
         ArgumentNullException.ThrowIfNull(heroCell);
         hero = new Hero(heroCell);
