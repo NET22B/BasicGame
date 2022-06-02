@@ -44,11 +44,20 @@ namespace BasicGame.Tests
         //    Assert.Equal(expected, actual);
         //}
 
-        //. With IConfiguration Extension wrapper with Interface
+        //3. With Func
         [Fact]
         public void Map_Constructor_SetCorrectWidth()
         {
-            
+            const int expected = 10;
+            var mockConfig = new Mock<IConfiguration>();
+
+            ExtensionTestFunc.Implementation = (c, v) => expected;
+
+            var map = new Map(mockConfig.Object);
+
+            var actual = map.Width;
+
+            Assert.Equal(expected, actual);
         }
     }
 }

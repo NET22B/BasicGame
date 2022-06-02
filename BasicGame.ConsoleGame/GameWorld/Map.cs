@@ -19,8 +19,8 @@ public class Map : IMap
     {
         //.1 var (width, height) = mapService.GetMap();
 
-        var width = config.GetMapSizeFor("x");
-        var height = config.GetMapSizeFor("y");
+        var width = config.GetMapSizeForFunc("x");
+        var height = config.GetMapSizeForFunc("y");
 
         Width = width;
         Height = height;
