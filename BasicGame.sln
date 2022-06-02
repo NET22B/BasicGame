@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGame.ConsoleGame", "BasicGame.ConsoleGame\BasicGame.ConsoleGame.csproj", "{9FDCB01F-B391-4217-A2CC-95D2ACC26ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicGame.LimitedList", "BasicGame.LimitedList\BasicGame.LimitedList.csproj", "{E6459BE7-96E5-476B-A901-819BBCAE6246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGame.LimitedList", "BasicGame.LimitedList\BasicGame.LimitedList.csproj", "{E6459BE7-96E5-476B-A901-819BBCAE6246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicGame.Tests", "BasicGame.Tests\BasicGame.Tests.csproj", "{CF491501-4A2F-4F99-9561-CA34C2A78956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E6459BE7-96E5-476B-A901-819BBCAE6246}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6459BE7-96E5-476B-A901-819BBCAE6246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6459BE7-96E5-476B-A901-819BBCAE6246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF491501-4A2F-4F99-9561-CA34C2A78956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF491501-4A2F-4F99-9561-CA34C2A78956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF491501-4A2F-4F99-9561-CA34C2A78956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF491501-4A2F-4F99-9561-CA34C2A78956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

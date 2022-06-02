@@ -1,4 +1,5 @@
 ﻿using BasicGame.ConsoleGame.Entities.Items;
+using BasicGame.ConsoleGame.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,10 +28,11 @@ internal class Startup
         services.AddSingleton<IUI, ConsoleUI>();
         services.AddSingleton<IMap, Map>();
         services.AddSingleton<Game>();
-        services.AddSingleton(configuration.GetSection("game:mapsettings").Get<MapSettings>());
+        services.AddSingleton<IMapSettings>(configuration.GetSection("game:mapsettings").Get<MapSettings>());
         services.Configure<MapSettings>(configuration.GetSection("game:mapsettings").Bind);
         services.AddSingleton<ILimitedList<string>>(new MessageLog<string>(6));
         services.AddSingleton<ILimitedList<Item>>(new LimitedList<Item>(3));
+        services.AddSingleton<IMapService, MapService>();
     }
 
     private IConfiguration GetConfig()

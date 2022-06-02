@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicGame.ConsoleGame.GameWorld
 {
-    public class MapSettings
+    public class MapSettings : IMapSettings
     {
         public int X { get; set; }
         public int Y { get; set; }
