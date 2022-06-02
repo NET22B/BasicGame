@@ -14,12 +14,13 @@ public class Map : IMap
 
     //public Map(IConfiguration config, IMapSettings settings, IMapService mapService)
    // public Map(IConfiguration config, IOptions<MapSettings> options)
-    public Map(IMapService mapService)
+   //1. public Map(IMapService mapService)
+    public Map(IConfiguration config)
     {
-        var (width, height) = mapService.GetMap();
+        //.1 var (width, height) = mapService.GetMap();
 
-        //var width = config.GetMapSizeFor("x");
-        //var height = config.GetMapSizeFor("y");
+        var width = config.GetMapSizeFor("x");
+        var height = config.GetMapSizeFor("y");
 
         Width = width;
         Height = height;

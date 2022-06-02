@@ -43,10 +43,10 @@ namespace BasicGame.ConsoleGame.Extensions
             return creatures.FirstOrDefault(c => c.Cell == cell);
         }
 
-        public static int GetMapSizeFor(this IConfiguration config, string value)
-        {
-            var section = config.GetSection("game:mapsettings");
-            return int.TryParse(section[value], out int result) ? result : 0;
-        }
+        //public static int GetMapSizeFor(this IConfiguration config, string value)
+        //{
+        //    var section = config.GetSection("game:mapsettings");
+        //    return int.TryParse(section[value], out int result) ? result : 0;
+        //}
     }
 }
