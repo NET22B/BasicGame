@@ -1,29 +1,31 @@
 ﻿
 using Microsoft.Extensions.Configuration;
 
+var position = new Position(10, 20);
+var position2 = new Position(10, 20);
 
 
-//var ui = config.GetSection("game:ui").Value;
 
-//IUI implementation;
+//Console.WriteLine(position.ToString());
 
-//switch (ui)
-//{
-//    case "console" :
-//        implementation = new ConsoleUI();
-//        break;
-//    default:
-//        break;
-//}
-//var x = config.GetSection("game:mapsettings:x").Value;
-//var mapsettings = config.GetSection("game:mapsettings").GetChildren();
+var eq  = position.Equals(position2);
 
-//var someValue = mapsettings.First();
+var pos2 = position with { Y = 5 };
+
+
+var demo = new Demo(10, "10", new[] {"Nisse"});
+//demo.items = null;
+demo.items[0] = "Kalle";
+//var demo2 = new Demo(10, "10");
+
+var (y, x, map) = demo;
+
+
+//var areEqual = demo.Equals(demo2);
+
+
 var startup = new Startup();
 startup.SetUp();
-
-//var game = new Game(new ConsoleUI(), config);
-//game.Run();
 
 Console.WriteLine("Thanks for playing");
 Console.ReadLine();
